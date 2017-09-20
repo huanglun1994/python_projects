@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from wea_web.models import Weather
 
-# Create your views here.
+
+def index(request):
+    weather = Weather.objects
