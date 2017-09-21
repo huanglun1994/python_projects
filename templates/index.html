@@ -1,0 +1,17 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+    <body>
+        <ul>
+            {% for data in weather %}
+                <li>
+                    <div class="ztitle">时间：{{ data.date }} </div>
+                    <div>天气：{{ data.weather }} </div>
+                    <div>温度：{{ data.tem_min}}℃~{{ data.tem_max }}℃ </div>
+                    <div>风力：{{ data.wind }} </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
