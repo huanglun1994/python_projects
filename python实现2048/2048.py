@@ -76,3 +76,28 @@ def invert(field):
     return [row[::-1] for row in field]
 
 
+class GameField:
+    """创建棋盘"""
+    def __init__(self, height=4, width=4, win=2048):
+        """初始化棋盘的参数，可以指定棋盘的高和宽以及游戏胜利条件，默认是最经典的 4x4～2048"""
+        self.height = height  # 高
+        self.width = width  # 宽
+        self.win_value = win  # 过关分数
+        self.score = 0  # 当前分数
+        self.high_score = 0  # 最高分
+        self.reset()  # 棋盘重置
+
+    def spawn(self):
+        """随机生成一个 2 或者 4"""
+        new_element = 4 if randrange(100) > 89 else 2
+        (i, j) = choice([(i, j) for i in range(self.width) for j in range(self.height)
+                         if self.field[i][j] == 0])
+        self.field[i][j] = new_element
+
+    def reset(self):
+        """重置棋盘"""
+        if self.score > self.high_score:
+            self.high_score = self.score
+        self.score = 0
+        self.field = [[0 for i in range(self.width)] for j in range(self.height)]
+        self.spawn()
