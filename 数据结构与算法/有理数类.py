@@ -13,6 +13,12 @@ class Rational:
             m, n = n % m, m
         return n
 
+    @staticmethod
+    def _verify_type(obj):
+        """判断obj是否是有理数对象"""
+        if not isinstance(obj, Rational):
+            raise TypeError
+
     def __init__(self, num, den=1):
         if not isinstance(num, int) or not isinstance(den, int):
             raise TypeError
@@ -35,11 +41,66 @@ class Rational:
 
     def __add__(self, other):
         """加法运算"""
+        Rational._verify_type(other)
+        den = self._den * other.den()
+        num = (self._num * other.den()) + (self._den * other.num())
+        return Rational(num, den)
 
+    def __mul__(self, other):
+        """乘法运算"""
+        Rational._verify_type(other)
+        return Rational(self._num * other.num(), self._den * other.den())
 
-    def print(self):
-        print(str(self.num) + '/' + str(self.den))
+    def __floordiv__(self, other):
+        """整除运算"""
+        Rational._verify_type(other)
+        if other.num() == 0:
+            raise ZeroDivisionError
+        return Rational(self._num * other.den(), self._den * other.num())
 
-r1 = Rational(3, 5)
-r2 = r1.plus(Rational(7, 15))
-r2.print()
+    def __sub__(self, other):
+        """减法运算"""
+        Rational._verify_type(other)
+        den = self._den * other.den()
+        num = (self._num * other.den()) - (self._den * other.num())
+        return Rational(num, den)
+
+    def __truediv__(self, other):
+        """除法运算"""
+        Rational._verify_type(other)
+        if other.num() == 0:
+            raise ZeroDivisionError
+        return float((self._num * other.den()) / (self._den * other.num()))
+
+    def __eq__(self, other):
+        """相等运算"""
+        Rational._verify_type(other)
+        return self._num * other.den() == self._den * other.num()
+
+    def __lt__(self, other):
+        """小于运算"""
+        Rational._verify_type(other)
+        return self._num * other.den() < self._den * other.num()
+
+    def __gt__(self, other):
+        """大于运算"""
+        Rational._verify_type(other)
+        return self._num * other.den() > self._den * other.num()
+
+    def __ne__(self, other):
+        """不等运算"""
+        Rational._verify_type(other)
+        return self._num * other.den() != self._den * other.num()
+
+    def __le__(self, other):
+        """小于等于运算"""
+        Rational._verify_type(other)
+        return self._num * other.den() <= self._den * other.num()
+
+    def __ge__(self, other):
+        """大于等于运算"""
+        Rational._verify_type(other)
+        return self._num * other.den() >= self._den * other.num()
+
+    def __str__(self):
+        return '{0}/{1}'.format(str(self._num), str(self._den))
