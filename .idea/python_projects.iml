@@ -7,6 +7,7 @@
         <option name="settingsModule" value="django_scrapy/settings.py" />
         <option name="manageScript" value="$MODULE_DIR$/manage.py" />
         <option name="environment" value="&lt;map/&gt;" />
+        <option name="commandsToSkip" value="" />
       </configuration>
     </facet>
   </component>
@@ -17,7 +18,7 @@
       <sourceFolder url="file://$MODULE_DIR$/wea_web" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/templates" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.6.3 (D:\anaconda\python.exe) (1)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.5.2 (/usr/bin/python3.5)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
